@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/recipe');
 
-// GET route to fetch all recipes
 router.get('/', async (req, res) => {
   try {
     const recipes = await Recipe.find({});
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST route to add a new recipe
 router.post('/', async (req, res) => {
   try {
     const newRecipe = new Recipe(req.body);
@@ -23,7 +21,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET route to find a specific recipe by ID
 router.get('/:id', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
@@ -36,7 +33,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PUT route to update a recipe by ID
 router.put('/:id', async (req, res) => {
   try {
     const updatedRecipe = await Recipe.findByIdAndUpdate(
@@ -53,7 +49,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE route to remove a recipe by ID
 router.delete('/:id', async (req, res) => {
   try {
     const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
